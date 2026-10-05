@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Aluno
 
-# Create your views here.
+
+def listar_alunos(request):
+    alunos = Aluno.objects.all().values()
+    return JsonResponse(list(alunos), safe=False)
